@@ -50,6 +50,8 @@ test("docs has no violations, search filters", async ({ page }) => {
   expect(results.violations).toEqual([]);
   await page.getByLabel("Search components").fill("toast");
   await expect(page.getByText("1 of 24")).toBeVisible();
+  const fav = await page.request.get("/assets/favicon.svg");
+  expect(fav.status()).toBe(200);
 });
 
 test("blueprint theme has no violations", async ({ page }) => {

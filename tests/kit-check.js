@@ -55,7 +55,7 @@ ok("scaffold-refs", scaffolded.includes("blueprint.css") && scaffolded.includes(
 fs.rmSync(tmp, { recursive: true, force: true });
 
 // 5. Ship files: types, playground, docs, assets, license.
-for (const f of ["react/index.d.ts", "adapters/react.d.ts", "adapters/vue.d.ts", "adapters/svelte.d.ts", "playground.html", "docs.html", "assets/saisei-header.svg", "assets/demo-kit.png", "assets/demo-playground.png", "assets/demo-docs.png", "assets/demo-blueprint.png", "LICENSE", "CHANGELOG.md"]) {
+for (const f of ["react/index.d.ts", "adapters/react.d.ts", "adapters/vue.d.ts", "adapters/svelte.d.ts", "playground.html", "docs.html", "assets/saisei-header.svg", "assets/favicon.svg", "assets/favicon-180.png", "assets/demo-kit.png", "assets/demo-playground.png", "assets/demo-docs.png", "assets/demo-blueprint.png", "LICENSE", "CHANGELOG.md"]) {
   ok("ship-" + path.basename(f), fs.existsSync(path.join(root, f)), f + " must ship");
 }
 
