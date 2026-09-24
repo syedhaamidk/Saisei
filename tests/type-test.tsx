@@ -5,7 +5,7 @@ import {
   Button, Card, Badge, Alert, Skeleton, Empty, Progress, Crumbs,
   Modal, Tabs, Accordion, ToastProvider, useToast,
   TickerTape, ThemeToggle, DataTable, CommandPalette,
-  Dropdown, Combobox, Reveal, AnimatedNumber,
+  Dropdown, Combobox, Reveal, AnimatedNumber, TiltCard, DrawOn, ScrollRule,
 } from "../react/index";
 
 export function All() {
@@ -35,6 +35,11 @@ export function All() {
       <p className="mono text-sm">
         Shipped <AnimatedNumber value={128} /> components and counting.
       </p>
+      <TiltCard max={8}>
+        <Card tag="// TILT" title="Pointer-tracked depth">
+          Glare, spotlight, and 3D tilt in one wrapper.
+        </Card>
+      </TiltCard>
     </ToastProvider>
   );
 }

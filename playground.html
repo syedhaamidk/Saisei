@@ -29,6 +29,8 @@
 </head>
 <body>
 
+<div class="scroll-rule" aria-hidden="true"></div>
+
 <a href="#pg-preview" class="skip-link">Skip to preview</a>
 
 <div class="container" style="padding-bottom: var(--space-8);">
@@ -90,6 +92,7 @@
           <button class="btn btn-secondary btn-sm" type="button" data-preset="soft">Soft</button>
           <button class="btn btn-secondary btn-sm" type="button" data-preset="moss">Moss</button>
           <button class="btn btn-secondary btn-sm" type="button" data-preset="slate">Slate</button>
+          <button class="btn btn-secondary btn-sm" type="button" data-preset="blueprint">Blueprint</button>
         </div>
       </div>
     </form>
@@ -243,6 +246,10 @@
     slate: {
       light: { "--paper": "#F7F8FA", "--paper-alt": "#EBEEF2", "--ink": "#17191D", "--ink-soft": "#5B6068", "--line": "#D5D9E0", "--line-strong": "#9AA0AB", "--accent": "#17191D", "--accent-hover": "#3B4048", "--accent-ink": "#F7F8FA" },
       dark: { "--paper": "#111418", "--paper-alt": "#1A1E24", "--ink": "#EFF1F5", "--ink-soft": "#ABB2BC", "--line": "#31363E", "--line-strong": "#596069", "--accent": "#EFF1F5", "--accent-hover": "#D2D7DE", "--accent-ink": "#111418" }
+    },
+    blueprint: {
+      light: { "--paper": "#143D66", "--paper-alt": "#0E2C4E", "--ink": "#FFFFFF", "--ink-soft": "#C3D2E2", "--line": "#2E5A8C", "--line-strong": "#7FA3CC", "--accent": "#FFFFFF", "--accent-hover": "#D6E2F0", "--accent-ink": "#143D66" },
+      dark: { "--paper": "#0A1F36", "--paper-alt": "#0D2742", "--ink": "#FFFFFF", "--ink-soft": "#B9C9DC", "--line": "#274A73", "--line-strong": "#6E92BE", "--accent": "#FFFFFF", "--accent-hover": "#CFDCEA", "--accent-ink": "#0A1F36" }
     }
   };
 

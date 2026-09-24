@@ -6,7 +6,7 @@ import {
   Button, Card, Badge, Alert, Modal, Tabs, Accordion,
   ToastProvider, useToast, TickerTape, ThemeToggle,
   DataTable, CommandPalette, Dropdown, Combobox,
-  Reveal, AnimatedNumber,
+  Reveal, AnimatedNumber, TiltCard, DrawOn, ScrollRule,
 } from "@chomuiro/saisei/react";
 
 function Demo() {
@@ -70,6 +70,16 @@ function Demo() {
       <p className="mono text-sm">
         Shipped <AnimatedNumber value={128} /> components and counting.
       </p>
+      <TiltCard max={8}>
+        <Card tag="// TILT" title="Pointer-tracked depth">
+          Glare, spotlight, and 3D tilt in one wrapper.
+        </Card>
+      </TiltCard>
+      <DrawOn label="Schematic demo">
+        <circle cx="40" cy="36" r="22" />
+        <line x1="80" y1="36" x2="208" y2="36" />
+      </DrawOn>
+      <ScrollRule />
       <Tabs
         label="Demo sections"
         tabs={[

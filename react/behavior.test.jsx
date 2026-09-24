@@ -7,6 +7,9 @@ import Tabs from "./Tabs.jsx";
 import DataTable from "./DataTable.jsx";
 import CommandPalette from "./CommandPalette.jsx";
 import Dropdown from "./Dropdown.jsx";
+import TiltCard from "./TiltCard.jsx";
+import DrawOn from "./DrawOn.jsx";
+import ScrollRule from "./ScrollRule.jsx";
 import { ToastProvider, useToast } from "./Toast.jsx";
 
 describe("Modal", () => {
@@ -138,6 +141,38 @@ describe("Dropdown", () => {
     expect(document.activeElement).toBe(items[1]);
     await user.keyboard("{Enter}");
     expect(picked).toBe(2);
+  });
+});
+
+describe("TiltCard", () => {
+  it("tilts toward the pointer and resets on leave", async () => {
+    const user = userEvent.setup();
+    render(
+      <TiltCard max={8}>
+        <div className="card">tilting</div>
+      </TiltCard>
+    );
+    const inner = document.querySelector(".tilt-inner");
+    await user.hover(screen.getByText("tilting"));
+    await waitFor(() => expect(inner.style.getPropertyValue("--rx")).not.toBe(""));
+    await user.unhover(screen.getByText("tilting"));
+    expect(inner.style.getPropertyValue("--rx")).toBe("0deg");
+    expect(inner.style.getPropertyValue("--ry")).toBe("0deg");
+  });
+});
+
+describe("DrawOn + ScrollRule", () => {
+  it("renders schematic svg and fixed rule", () => {
+    render(
+      <>
+        <DrawOn label="Schematic">
+          <circle cx="40" cy="36" r="22" />
+        </DrawOn>
+        <ScrollRule />
+      </>
+    );
+    expect(screen.getByRole("img", { name: "Schematic" })).toBeTruthy();
+    expect(document.querySelector(".scroll-rule").getAttribute("aria-hidden")).toBe("true");
   });
 });
 

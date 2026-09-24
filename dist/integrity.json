@@ -1,11 +1,12 @@
 {
-  "dist/blueprint.css": "sha384-hOMxVP8MNcRnMeFe12JkhN4ErvgmWisYQMH5gG6bMKsAbnkCcAhP0HMPF8BDWDid",
-  "dist/blueprint.js": "sha384-UUGerTG7YCurmgfcrE7bEdjfBPpLHdVYKngAPab53d2my6SFor+a59tbruy8uVCs",
-  "dist/blueprint.min.css": "sha384-tR0ZoZyfijIMm83auAKD0EN5yS5FEeriYp3PUfwO2iI6EKl5ILFJn2teHIkR7hJ0",
-  "dist/blueprint.min.js": "sha384-mhujlwBdWclNdXYYsotKEhMP4AFj+8T4qMFxdEyDydVBexhGMmUnI1PqFw8bbcPK",
-  "dist/theme-warm.css": "sha384-wGOZ7WTcWotz4DfUf0+YymYfFQ2o+ZvipOUCq5wOTi7a87kYkoWTm1p+5sbCLa6o",
-  "dist/theme-contrast.css": "sha384-RdkM5DztLn3keOHJddViIyih8fOydtgHMa+4wxFq/TyFMOhGbE7Ur/P5+baXkiJH",
-  "dist/theme-soft.css": "sha384-69ddxtGeG6WEoc5YKUEVUquQA4mqJZUEndtEtTrcq0000DKmPdbEz22KRmMSFF+P",
-  "dist/theme-moss.css": "sha384-HsWo3RQSzXzTxHh4GLknpKWJSLGCHP3oXexM3hQ2bEmQar6F2JJbQQRkifQrUcz6",
-  "dist/theme-slate.css": "sha384-XSRix3eYCrqvsvvVZ8pG7LgWU2WJy0m47H6N//LLpYil4Luyan4bpjXv9eT3usA/"
+  "dist/blueprint.css": "sha384-B/lRRTZM5n2g5qKUnO7mgXhXw41NGEH76/fNqWbLNn4lL902+bVh1VvhPVNCEL9m",
+  "dist/blueprint.js": "sha384-2fmhsPwoqJwicrypHR35H/hu88bqya2yPhFXnEDi7ZedkoWCC7u71qQ7QmkCWebu",
+  "dist/blueprint.min.css": "sha384-Syj45ueu9A4zgEw6qoHs2pMBT1WVApbMX5b9kaQpwEdzVJHAEE/aoGk54+BPeuIj",
+  "dist/blueprint.min.js": "sha384-J+5dlcwtwCf0JuHaS21zQ4rCJJrswWA2Ykk5WhWd59+JIL4W0+/DjTjMP9g5dWSF",
+  "dist/theme-warm.css": "sha384-4MmhNS9OtrD1tD9GuUlS5BX/wxaiqyJdtgJ89c2n7hFIUuIjWxQj/Cz2c5PSzYLy",
+  "dist/theme-contrast.css": "sha384-JWjVRM0NizIrsOIQSmLHCD33j7j+JAkpbgkIgxgWAfnI8RCTPGDwOXaJsa32w7TI",
+  "dist/theme-soft.css": "sha384-Z+YuVaXqKayqq3xjmPUWlAVwScRleOIF4Y0emxfD6KzWSp0JMkZMVFp/I4jb6lA9",
+  "dist/theme-moss.css": "sha384-Ws8w/0DsMx7Ujg0WSPC/533MaHTh5Pa0fDEGwvEb849tUOCx2JGnjbYfBrCY+Guo",
+  "dist/theme-slate.css": "sha384-Q4MaIcksuo0rmmKFK5ouFjNGqcvFTLXpaW0iVcVmzMwGQd4h/g4UpsNIfRD93fck",
+  "dist/theme-blueprint.css": "sha384-gSv9243tSouz9cfqO/xy29JXOGNIRsevhw+XhEYUj3xHY2nB+oluRDtDubGgXioc"
 }

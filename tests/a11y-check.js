@@ -33,6 +33,11 @@ for (const token of ["ticker-tape", "draw-in", "tape-scroll", "sheen", "card-ent
 }
 check("countup-js", cjs.includes("data-countup"), "components.js must wire [data-countup]");
 check("countup-demo", html.includes("data-countup"), "index.html must demo count-up stats");
+check("tilt-js", cjs.includes("data-tilt") && cjs.includes(".spotlight"), "components.js must wire tilt + spotlight");
+check("tilt-demo", html.includes("data-tilt"), "index.html must demo tilt");
+check("draw-js", cjs.includes("data-draw"), "components.js must wire draw-on");
+check("draw-demo", html.includes("data-draw"), "index.html must demo draw-on");
+check("scrollrule", cjs.includes("scroll-rule") && html.includes("scroll-rule"), "scroll rule needs JS + markup");
 
 // 5. DataTable: styles + auto-wiring + demo markup.
 check("datatable-css", css.includes(".datatable-bar") && css.includes("th[data-sort]"), "components.css must contain datatable styles");

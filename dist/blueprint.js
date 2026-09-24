@@ -1,4 +1,4 @@
-/*! @chomuiro/saisei v4.5.0 — Blueprint kit. MIT. See README "Reuse in any website". */
+/*! @chomuiro/saisei v4.6.0 — Blueprint kit. MIT. See README "Reuse in any website". */
 /* ============================================================
    COMPONENTS.JS — no dependencies. Auto-wires any markup that
    follows the data-attribute contracts below. Drop this file in
@@ -605,6 +605,99 @@
     });
   }
 
+  /* ---- Tilt + spotlight + draw-on + scroll rule ---- */
+  function motionOK() {
+    return !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  // [data-tilt] [data-tilt-max="8"]: pointer-tracked 3D tilt + --mx/--my
+  // for .tilt-glare / .spotlight children. rAF-throttled, resets on leave.
+  function initTilt() {
+    if (!motionOK()) return;
+    document.querySelectorAll("[data-tilt]").forEach((el) => {
+      const inner = el.querySelector(".tilt-inner") || el;
+      const max = parseFloat(el.dataset.tiltMax) || 8;
+      let raf = 0;
+      el.addEventListener("pointermove", (e) => {
+        if (e.pointerType === "touch") return;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r = el.getBoundingClientRect();
+          const px = (e.clientX - r.left) / Math.max(1, r.width);
+          const py = (e.clientY - r.top) / Math.max(1, r.height);
+          inner.style.setProperty("--ry", ((px - 0.5) * max * 2).toFixed(2) + "deg");
+          inner.style.setProperty("--rx", ((0.5 - py) * max * 2).toFixed(2) + "deg");
+          el.style.setProperty("--mx", (px * 100).toFixed(1) + "%");
+          el.style.setProperty("--my", (py * 100).toFixed(1) + "%");
+        });
+      });
+      el.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(raf);
+        inner.style.setProperty("--rx", "0deg");
+        inner.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  // .spotlight (without tilt): cursor-tracked radial highlight only.
+  function initSpotlight() {
+    if (!motionOK()) return;
+    document.querySelectorAll(".spotlight").forEach((el) => {
+      el.addEventListener("pointermove", (e) => {
+        if (e.pointerType === "touch") return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left).toFixed(0) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top).toFixed(0) + "px");
+      });
+    });
+  }
+
+  // [data-draw]: SVG strokes sketch themselves on scroll into view.
+  // Measures each path/circle/line, then flips .drawn with per-shape stagger.
+  function initDraw() {
+    const scopes = document.querySelectorAll("[data-draw]");
+    if (!scopes.length) return;
+    const prep = (scope) => {
+      const shapes = scope.querySelectorAll("path, circle, line");
+      shapes.forEach((s, i) => {
+        try {
+          const len = s.getTotalLength();
+          s.style.strokeDasharray = String(len);
+          s.style.strokeDashoffset = String(len);
+          s.style.setProperty("--draw-delay", (i * 120) + "ms");
+        } catch (e) { /* non-geometry shape — leave static */ }
+      });
+    };
+    const play = (scope) => scope.classList.add("drawn");
+    if (!motionOK() || !("IntersectionObserver" in window)) {
+      scopes.forEach((s) => { if (motionOK()) { prep(s); play(s); } });
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { prep(e.target); requestAnimationFrame(() => play(e.target)); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    scopes.forEach((s) => io.observe(s));
+  }
+
+  // .scroll-rule: fixed top progress bar driven by scroll (rAF-throttled).
+  function initScrollRule() {
+    const bar = document.querySelector(".scroll-rule");
+    if (!bar) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    };
+    window.addEventListener("scroll", () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
   /* ---- Count-up ---- */
   // <span data-countup="1234" data-decimals="0" data-duration="1200" data-prefix="$">0</span>
   // Animates from 0 to the target with ease-out when scrolled into view.
@@ -711,6 +804,10 @@
     initMenus();
     initComboboxes();
     initCountUp();
+    initTilt();
+    initSpotlight();
+    initDraw();
+    initScrollRule();
     initDrawers();
   });
   }

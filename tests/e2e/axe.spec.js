@@ -52,6 +52,13 @@ test("docs has no violations, search filters", async ({ page }) => {
   await expect(page.getByText("1 of 24")).toBeVisible();
 });
 
+test("blueprint theme has no violations", async ({ page }) => {
+  await page.goto("/index.html");
+  await page.addStyleTag({ url: "/dist/theme-blueprint.css" });
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations).toEqual([]);
+});
+
 test("no violations with palette open", async ({ page }) => {
   await page.goto("/index.html");
   await page.keyboard.press("Control+k");

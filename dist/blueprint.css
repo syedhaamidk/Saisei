@@ -1,4 +1,4 @@
-/*! @chomuiro/saisei v4.5.0 — Blueprint kit. MIT. See README "Reuse in any website". */
+/*! @chomuiro/saisei v4.6.0 — Blueprint kit. MIT. See README "Reuse in any website". */
 /* ============================================================
    TOKENS — Blueprint system, monochrome.
    No hue anywhere. Status/semantics (note vs warning vs danger)
@@ -514,6 +514,56 @@ a.menu-item { color: var(--ink); }
 .stats { display: flex; gap: var(--space-6); flex-wrap: wrap; }
 .stat-value { font-family: var(--font-mono); font-size: var(--text-2xl); font-weight: 600; display: block; }
 .stat-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   TILT + SPOTLIGHT — pointer-driven depth. JS sets --rx/--ry
+   (deg) and --mx/--my (position); without JS these are inert
+   surfaces. Skipped entirely under prefers-reduced-motion.
+   ============================================================ */
+.tilt { perspective: 800px; }
+.tilt-inner {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform var(--duration-fast) var(--ease);
+  will-change: transform;
+}
+.tilt-glare {
+  position: relative;
+  pointer-events: none;
+}
+.tilt-glare::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.14), transparent 60%);
+  opacity: 0; transition: opacity var(--duration-fast) var(--ease);
+}
+.tilt-glare:hover::after { opacity: 1; }
+.spotlight { position: relative; }
+.spotlight::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), var(--accent-tint), transparent 70%);
+  opacity: 0; transition: opacity var(--duration-base) var(--ease);
+}
+.spotlight:hover::before { opacity: 1; }
+
+/* ============================================================
+   DRAW-ON — schematic strokes sketch themselves. JS measures
+   each path (getTotalLength) and flips .drawn; IO triggers it
+   on scroll into view. Stagger via --draw-delay per path.
+   ============================================================ */
+[data-draw] path, [data-draw] circle, [data-draw] line {
+  transition: stroke-dashoffset var(--duration-slow) var(--ease);
+  transition-delay: var(--draw-delay, 0ms);
+}
+
+/* ============================================================
+   SCROLL RULE — fixed dimension-line progress at viewport top.
+   JS sets scaleX; hidden from assistive tech (decorative).
+   ============================================================ */
+.scroll-rule {
+  position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 250;
+  background: var(--accent); transform-origin: left center; transform: scaleX(0);
+}
+[dir="rtl"] .scroll-rule { transform-origin: right center; }
 
 /* ============================================================
    RTL — mirrored motion for direction-sensitive transforms.

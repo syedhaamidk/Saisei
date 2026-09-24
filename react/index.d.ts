@@ -177,3 +177,21 @@ export declare const AnimatedNumber: React.FC<{
   suffix?: string;
   className?: string;
 }>;
+
+export declare const TiltCard: React.FC<{
+  children?: React.ReactNode;
+  max?: number;
+  glare?: boolean;
+  spotlight?: boolean;
+  className?: string;
+}>;
+
+export declare const DrawOn: React.FC<{
+  children?: React.ReactNode;
+  played?: boolean;
+  width?: string | number;
+  height?: string | number;
+  label?: string;
+}>;
+
+export declare const ScrollRule: React.FC;

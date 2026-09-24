@@ -4,6 +4,19 @@ All notable changes to `@chomuiro/saisei`, newest first.
 Versioning is SemVer: packaging/dist changes bump minor, fixes bump patch.
 Breaking removals bump major.
 
+## 4.6.0 — Tilt, spotlight, draw-on, scroll rule, blueprint-blue
+
+- **Tilt + spotlight** — `[data-tilt]` pointer-tracked 3D tilt with glare sweep
+  and cursor spotlight (rAF-throttled, touch/reduced-motion safe); React
+  `TiltCard`; `.spotlight` works standalone.
+- **Draw-on** — `[data-draw]` SVG strokes measured and sketched on scroll into
+  view with per-shape stagger; React `DrawOn` (+ `played` control).
+- **Scroll rule** — fixed dimension-line progress (`.scroll-rule`, vanilla +
+  React `ScrollRule`, RTL-aware origin), on all three pages.
+- **Blueprint-blue theme** — white-on-blue preset finally earning the name
+  (AA-checked); playground button + `dist/theme-blueprint.css`.
+- React `TiltCard`/`DrawOn`/`ScrollRule` in types, example, and behavior tests.
+
 ## 4.5.0 — Docs, shields, Svelte tests, Moss/Slate themes
 
 - **`docs.html`** — searchable catalog (24 entries, `/` shortcut, live demos,

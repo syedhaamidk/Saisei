@@ -59,6 +59,8 @@ Components: `Button` (primary/secondary/ghost/danger), `Card`/`Badge`/`Alert`/`S
 `Dropdown` (`label` + `items`), `Combobox` (`label` + `options`),
 `Drawer` (side panel, same contract as `Modal`), `Modal` accepts `size="sm"|"lg"`,
 `ToastProvider` actions via `toast(msg, { label, run })`,
+`TiltCard` (pointer 3D tilt + glare + spotlight), `DrawOn` (self-sketching SVG),
+`ScrollRule` (fixed scroll progress),
 `Reveal` (scroll entrance + `delay` stagger), `AnimatedNumber` (eased counts).
 Typed via `react/index.d.ts` (`npm run test:types`). Full example in `examples/react.jsx`.
 Vue helper: `adapters/vue.js` + `examples/vue.vue`.
@@ -108,7 +110,7 @@ outside-click/arrows handled); CSS-only tooltip via `data-tip` (avoid on
 **Token playground:** open `playground.html` — tweak surfaces, radius, and font
 stacks against a live component preview, then Copy CSS exports only the changed
 tokens as a `:root` (or `[data-theme="dark"]`) override block. One-click
-presets (Blueprint / Warm / High-contrast / Soft / Moss / Slate, same values as `themes.json`;
+presets (Default / Warm / High-contrast / Soft / Moss / Slate / Blueprint-blue, same values as `themes.json`;
 `dist/theme-<name>.css` is built for direct inclusion). Design tools consume
 `tokens.json` (Style Dictionary format, verified against `tokens.css` in CI).
 
