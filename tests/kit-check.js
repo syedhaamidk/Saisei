@@ -22,6 +22,12 @@ for (const f of ["dist/blueprint.css", "dist/blueprint.js", "dist/blueprint.min.
   ok("dist-" + path.basename(f), fs.existsSync(path.join(root, f)), f + " must be built");
 }
 
+// 1b. Deep imports must resolve under strict bundlers (Vite 8/Rolldown
+// failed on @chomuiro/saisei/dist/blueprint.css before "./dist/*" existed).
+const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+ok("exports-dist", pkg.exports && pkg.exports["./dist/*"] === "./dist/*", 'exports must map "./dist/*"');
+ok("exports-adapters", pkg.exports && pkg.exports["./adapters/*"] === "./adapters/*", 'exports must map "./adapters/*"');
+
 // 2. Minified is actually smaller and non-empty.
 const css = fs.readFileSync(path.join(root, "dist/blueprint.css"), "utf8");
 const cssMin = fs.readFileSync(path.join(root, "dist/blueprint.min.css"), "utf8");

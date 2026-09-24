@@ -4,6 +4,13 @@ All notable changes to `@chomuiro/saisei`, newest first.
 Versioning is SemVer: packaging/dist changes bump minor, fixes bump patch.
 Breaking removals bump major.
 
+## 4.6.1 — Deep export paths (dogfood fix)
+
+- **Fix:** `./dist/*` and `./adapters/*` export maps. Dogfooding in a real
+  Vite 8 app proved `@chomuiro/saisei/dist/blueprint.css` — the exact import
+  our README teaches — failed under Rolldown's strict resolution.
+  kit-check now asserts both mappings.
+
 ## 4.6.0 — Tilt, spotlight, draw-on, scroll rule, blueprint-blue
 
 - **Tilt + spotlight** — `[data-tilt]` pointer-tracked 3D tilt with glare sweep

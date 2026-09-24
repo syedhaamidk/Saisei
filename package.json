@@ -1,6 +1,6 @@
 {
   "name": "@chomuiro/saisei",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "description": "Blueprint drafting-style reusable frontend kit (tokens + components + motion + React library). No build step, no framework lock-in.",
   "license": "MIT",
   "keywords": [
@@ -32,10 +32,13 @@
     "saisei": "bin/init.js"
   },
   "exports": {
+    ".": "./dist/blueprint.js",
     "./css": "./dist/blueprint.css",
     "./css-min": "./dist/blueprint.min.css",
     "./js": "./dist/blueprint.js",
     "./js-min": "./dist/blueprint.min.js",
+    "./dist/*": "./dist/*",
+    "./adapters/*": "./adapters/*",
     "./react": {
       "types": "./react/index.d.ts",
       "default": "./react/index.js"
