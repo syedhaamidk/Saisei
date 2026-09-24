@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saisei — Reusable Frontend Kit</title>
+<script>
+  // Runs before first paint to avoid a flash of the wrong theme.
+  // Same read order as components.js: stored preference, then OS setting.
+  (function () {
+    try {
+      var stored = localStorage.getItem("bpk-theme");
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (stored === "dark" || (!stored && prefersDark)) document.documentElement.dataset.theme = "dark";
+    } catch (e) { /* storage/matchMedia unavailable — default light is fine */ }
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="container" style="padding-bottom: var(--space-8);">
+
+  <!-- Utility bar -->
+  <div class="utility-bar reveal">
+    <nav aria-label="Section navigation">
+      <ul class="utility-links">
+        <li><a href="#buttons">01 Buttons</a></li>
+        <li><a href="#forms">02 Forms</a></li>
+        <li><a href="#surfaces">03 Surfaces</a></li>
+        <li><a href="#patterns">04 Patterns</a></li>
+      </ul>
+    </nav>
+    <div class="row">
+      <button class="btn btn-ghost btn-sm mono" data-palette-open aria-label="Open command palette">⌘K</button>
+      <button class="btn btn-secondary btn-sm mono" id="theme-toggle">⇄ Dark</button>
+    </div>
+  </div>
+
+  <!-- Title block (hero) -->
+  <main id="main-content">
+  <div class="titleblock reg-corners draw-in reveal" style="animation-delay: 60ms;">
+    <div class="titleblock-main">
+      <span class="sheet-label">Kit / General Arrangement</span>
+      <h1 class="h1" style="max-width: 16ch;">A frontend you keep, not one you rebuild.</h1>
+      <p class="text-soft" style="max-width: 50ch;">Every color, corner, and typeface here is driven by tokens.css. Re-skin a new project there — nothing in components.css needs to change.</p>
+    </div>
+    <div class="titleblock-cell">
+      <span class="tb-label">Scale</span>
+      <span class="tb-value">1:1</span>
+    </div>
+    <div class="titleblock-cell">
+      <span class="tb-label">Rev</span>
+      <span class="tb-value">2.0</span>
+    </div>
+    <div class="titleblock-cell">
+      <span class="tb-label">Sheet</span>
+      <span class="tb-value">01 / 01</span>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <section id="buttons" class="reveal-on-scroll">
+    <span class="sheet-label">Sheet 01 — Components</span>
+    <h2 class="h2">Buttons</h2>
+    <p class="text-soft text-sm" style="margin-top: -8px; margin-bottom: var(--space-4);">Five variants, one consistent set of states.</p>
+    <div class="row" style="flex-wrap: wrap;">
+      <button class="btn btn-primary">Primary action</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-danger">Destructive</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+      <button class="btn btn-secondary btn-sm" data-tip="Small variant">Small</button>
+      <span class="menu-wrap">
+        <button class="btn btn-secondary btn-sm" data-menu-trigger aria-expanded="false" aria-controls="demo-menu" aria-haspopup="menu">Actions ▾</button>
+        <ul class="menu" id="demo-menu" role="menu" hidden>
+          <li role="none"><button class="menu-item" role="menuitem" onclick="window.toast('// Renamed')">Rename <span class="mono">R</span></button></li>
+          <li role="none"><button class="menu-item" role="menuitem" onclick="window.toast('// Duplicated')">Duplicate <span class="mono">D</span></button></li>
+          <li class="menu-sep" role="separator"></li>
+          <li role="none"><button class="menu-item" role="menuitem" onclick="window.toast('// Archived')">Archive</button></li>
+        </ul>
+      </span>
+    </div>
+  </section>
+
+  <div class="dim-divider"><div class="dim-divider-line"></div><span class="dim-divider-label">Sheet 02</span><div class="dim-divider-line"></div></div>
+
+  <!-- Forms -->
+  <section id="forms" class="reveal-on-scroll">
+    <h2 class="h2">Form controls</h2>
+    <div class="grid grid-2">
+      <div class="stack">
+        <div class="field">
+          <label class="label" for="name">Full name</label>
+          <input class="input" id="name" type="text" placeholder="Ada Lovelace">
+        </div>
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input class="input is-error" id="email" type="email" placeholder="you@example.com" aria-invalid="true" aria-describedby="email-error">
+          <span class="error-text" id="email-error" role="alert">// Enter a valid email address</span>
+        </div>
+        <div class="field">
+          <label class="label" for="role">Role</label>
+          <select class="select" id="role">
+            <option>Designer</option>
+            <option>Engineer</option>
+            <option>Product</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="label" for="combo-input">Team (combobox)</label>
+          <div class="combo-wrap">
+            <input class="input" id="combo-input" role="combobox" aria-expanded="false" aria-controls="combo-list" aria-autocomplete="list" autocomplete="off" placeholder="Pick a team…">
+            <ul class="combo-list" id="combo-list" role="listbox" aria-label="Teams" hidden>
+              <li role="option" data-value="Atlas">Atlas</li>
+              <li role="option" data-value="Beacon">Beacon</li>
+              <li role="option" data-value="Cartography">Cartography</li>
+              <li role="option" data-value="Drift">Drift</li>
+            </ul>
+          </div>
+          <span class="hint">Type to filter — ↑↓ + Enter supported.</span>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="field">
+          <label class="label" for="notes">Notes</label>
+          <textarea class="textarea" id="notes" placeholder="Anything we should know?"></textarea>
+          <span class="hint">Optional — visible only to your team.</span>
+        </div>
+        <div class="row">
+          <input class="checkbox" type="checkbox" id="cb" checked><label for="cb" class="text-sm">Email me updates</label>
+        </div>
+        <div class="row">
+          <input class="switch" type="checkbox" id="sw" checked><label for="sw" class="text-sm">Enable auto-save</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="dim-divider"><div class="dim-divider-line"></div><span class="dim-divider-label">Sheet 03</span><div class="dim-divider-line"></div></div>
+
+  <!-- Surfaces: cards, badges, alerts -->
+  <section id="surfaces" class="reveal-on-scroll">
+    <h2 class="h2">Surfaces &amp; feedback</h2>
+    <nav aria-label="Breadcrumb">
+      <ol class="crumbs">
+        <li><a href="#main-content">Index</a></li>
+        <li><a href="#surfaces">Surfaces</a></li>
+        <li><span aria-current="page">Feedback</span></li>
+      </ol>
+    </nav>
+    <div class="grid grid-3" style="margin-bottom: var(--space-5);">
+      <div class="card reg-corners">
+        <span class="card-tag">// CARD-01</span>
+        <span class="badge badge-accent">Active</span>
+        <h3 class="card-title" style="margin-top: var(--space-3);">Project Atlas</h3>
+        <p class="text-soft text-sm">Base card unit — badge, title, body, registration corners.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">// CARD-02</span>
+        <div class="row" style="margin-bottom: var(--space-3);">
+          <div class="avatar">JS</div>
+          <div>
+            <div style="font-weight: 600; font-size: var(--text-sm);">Jamie Sato</div>
+            <div class="text-soft text-sm">Product design</div>
+          </div>
+        </div>
+        <p class="text-soft text-sm">Avatar + card pairing for people, comments, activity.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">// CARD-03</span>
+        <div class="skeleton" style="height: 14px; width: 70%; margin-bottom: var(--space-2);"></div>
+        <div class="skeleton" style="height: 14px; width: 90%; margin-bottom: var(--space-2);"></div>
+        <div class="skeleton" style="height: 14px; width: 40%;"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom: var(--space-5);">
+      <span class="card-tag">// STATS — count up on scroll</span>
+      <div class="stats">
+        <div><span class="stat-value" data-countup="128" data-duration="1200">0</span><span class="stat-label">Components</span></div>
+        <div><span class="stat-value" data-countup="99.9" data-decimals="1" data-suffix="%">0</span><span class="stat-label">Type cover</span></div>
+        <div><span class="stat-value" data-countup="0" data-duration="900">0</span><span class="stat-label">Violations</span></div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="alert alert-accent"><span class="alert-tag">NOTE</span><span>A change was saved automatically.</span></div>
+      <div class="alert alert-warning"><span class="alert-tag">FLAG</span><span>Your plan is close to its usage limit.</span></div>
+      <div class="alert alert-danger"><span class="alert-tag">ERR</span><span>That upload failed — check the file format and try again.</span></div>
+      <div>
+        <span class="label" id="upload-label">Uploading sheet.pdf</span>
+        <div class="progress" role="progressbar" aria-labelledby="upload-label" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="margin-top: var(--space-2);"><i style="--value: 65%;"></i></div>
+      </div>
+      <div class="empty">
+        <span class="card-tag">// EMPTY</span>
+        <h3 class="empty-title">No revisions yet</h3>
+        <p>Nothing to show here. Start the first revision to fill this sheet.</p>
+        <button class="btn btn-primary btn-sm" onclick="window.toast('// Revision started')">Start revision</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="dim-divider"><div class="dim-divider-line"></div><span class="dim-divider-label">Sheet 04</span><div class="dim-divider-line"></div></div>
+
+  <!-- Patterns: tabs, accordion, modal, toast, table -->
+  <section id="patterns" class="reveal-on-scroll">
+    <h2 class="h2">Interactive patterns</h2>
+
+    <div style="margin-bottom: var(--space-6);">
+      <div class="tabs" role="tablist" aria-label="Demo sections" data-tabs>
+        <button class="tab" role="tab" aria-selected="true" data-tab-target="panel-overview">Overview</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab-target="panel-activity">Activity</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab-target="panel-settings">Settings</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel" id="panel-overview" role="tabpanel" aria-hidden="false">
+          <p class="text-soft text-sm">Tabs swap panel content without a page reload. Match <span class="mono">data-tab-target</span> to a panel id to wire a new one. Try the arrow keys, too.</p>
+        </div>
+        <div class="tab-panel" id="panel-activity" role="tabpanel" aria-hidden="true">
+          <p class="text-soft text-sm">Second panel — cross-fades in rather than popping, and the underline slides to match.</p>
+        </div>
+        <div class="tab-panel" id="panel-settings" role="tabpanel" aria-hidden="true">
+          <p class="text-soft text-sm">Third panel — same pattern, no extra JS needed per instance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: var(--space-6);">
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion-trigger>
+          How do I re-theme this for a new project?
+          <span class="chev">+</span>
+        </button>
+        <div class="accordion-panel">
+          <div class="accordion-panel-inner">Edit the values in tokens.css — colors, type, radius, spacing. Every component reads from those variables, so nothing else needs to change.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion-trigger>
+          Does this depend on any framework?
+          <span class="chev">+</span>
+        </button>
+        <div class="accordion-panel">
+          <div class="accordion-panel-inner">No — it's plain CSS and vanilla JS. Drop it into a static site as-is, or use the CSS as the base layer inside a React, Vue, or Svelte project.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: var(--space-6);">
+      <button class="btn btn-primary" data-modal-open="demo-modal">Open modal</button>
+      <button class="btn btn-secondary" data-drawer-open="demo-drawer">Open drawer</button>
+      <button class="btn btn-secondary" data-command="Fire a toast" onclick="window.toast('// Saved successfully')">Fire a toast</button>
+      <button class="btn btn-ghost btn-sm" data-command="Undoable toast" onclick="window.toast('// Archived', { label: 'Undo', run: () => window.toast('// Restored') })">Toast + action</button>
+      <button class="btn btn-ghost btn-sm mono" data-palette-open>⌘K <span class="text-soft">commands</span></button>
+    </div>
+
+    <div data-datatable data-page-size="3">
+      <div class="datatable-bar">
+        <div class="field"><label class="label" for="team-filter">Filter team</label><input class="input" id="team-filter" type="search" data-table-filter placeholder="Ada, design…"></div>
+        <div class="pager">
+          <button class="btn btn-secondary btn-sm" data-table-prev>← Prev</button>
+          <span data-table-info>Page 1</span>
+          <button class="btn btn-secondary btn-sm" data-table-next>Next →</button>
+        </div>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Team table, scrollable">
+      <table class="table">
+        <thead>
+          <tr><th scope="col" data-sort="name">Name</th><th scope="col" data-sort="status">Status</th><th scope="col" data-sort="role">Role</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ada Lovelace</td><td><span class="badge badge-accent">Active</span></td><td>Engineer</td></tr>
+          <tr><td>Grace Hopper</td><td><span class="badge badge-warning">Pending</span></td><td>Design</td></tr>
+          <tr><td>Alan Turing</td><td><span class="badge badge-danger">Suspended</span></td><td>Product</td></tr>
+          <tr><td>Katherine Johnson</td><td><span class="badge badge-accent">Active</span></td><td>Analysis</td></tr>
+          <tr><td>Margaret Hamilton</td><td><span class="badge badge-accent">Active</span></td><td>Engineer</td></tr>
+          <tr><td>Radia Perlman</td><td><span class="badge badge-warning">Pending</span></td><td>Engineer</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+  </main>
+
+</div>
+
+<!-- Command palette (Ctrl/⌘+K). Sources auto-collected: nav links + [data-command]. -->
+<div class="palette-overlay" id="palette" role="presentation" aria-hidden="true" inert>
+  <div class="palette" role="dialog" aria-modal="true" aria-label="Command palette">
+    <input class="palette-input" type="text" placeholder="Type a command…" aria-label="Command search" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false">
+    <ul class="palette-list" id="palette-list" role="listbox" aria-label="Commands"></ul>
+  </div>
+</div>
+
+<!-- Drawer -->
+<div class="drawer-overlay" id="demo-drawer" data-drawer role="presentation" aria-hidden="true" inert>
+  <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <span class="modal-tag">// Drawer</span>
+    <div class="modal-header">
+      <h3 class="h3" id="drawer-title" style="margin: 0;">Revision notes</h3>
+      <button class="modal-close" data-drawer-close aria-label="Close panel">[ X ]</button>
+    </div>
+    <p class="text-soft text-sm">Slides from the inline-end side (mirrors in RTL). Same focus trap, scroll lock, and restore as the modal.</p>
+    <div class="stack" style="margin-top: var(--space-4);">
+      <button class="btn btn-secondary btn-sm" data-drawer-close>Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal markup -->
+<div class="modal-overlay" id="demo-modal" data-modal role="presentation" aria-hidden="true" inert>
+  <div class="modal reg-corners" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <span class="modal-tag">// Revision note</span>
+    <div class="modal-header">
+      <h3 class="h3" id="modal-title" style="margin: 0;">Delete project?</h3>
+      <button class="modal-close" data-modal-close aria-label="Close dialog">[ X ]</button>
+    </div>
+    <p id="modal-desc" class="text-soft text-sm">This removes Project Atlas and its history. This can't be undone.</p>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-modal-close>Cancel</button>
+      <button class="btn btn-danger" data-modal-close>Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="components.js"></script>
+</body>
+</html>
