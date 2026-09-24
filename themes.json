@@ -1,0 +1,100 @@
+{
+  "_note": "Source of truth for dist/theme-*.css (built by build.js) and the playground presets. Every ink-soft passes 4.5:1 on its paper-alt.",
+  "warm": {
+    "label": "Warm paper",
+    "light": {
+      "--paper": "#FAF7F1",
+      "--paper-alt": "#F0EAE0",
+      "--ink": "#1C1712",
+      "--ink-soft": "#625B52",
+      "--line": "#D8CFBF",
+      "--line-strong": "#A2967F",
+      "--accent": "#1C1712",
+      "--accent-hover": "#3E362D",
+      "--accent-ink": "#FAF7F1",
+      "--accent-tint": "rgba(28, 23, 18, 0.06)",
+      "--grid": "rgba(28, 23, 18, 0.045)"
+    },
+    "dark": {
+      "--paper": "#161210",
+      "--paper-alt": "#201B17",
+      "--ink": "#F5EFE6",
+      "--ink-soft": "#B3A898",
+      "--line": "#38302A",
+      "--line-strong": "#5C5248",
+      "--accent": "#F5EFE6",
+      "--accent-hover": "#D8CFC2",
+      "--accent-ink": "#161210",
+      "--accent-tint": "rgba(245, 239, 230, 0.08)",
+      "--grid": "rgba(245, 239, 230, 0.05)"
+    }
+  },
+  "contrast": {
+    "label": "High contrast",
+    "light": {
+      "--paper": "#FFFFFF",
+      "--paper-alt": "#F2F2F2",
+      "--ink": "#000000",
+      "--ink-soft": "#595959",
+      "--line": "#767676",
+      "--line-strong": "#1A1A1A",
+      "--accent": "#000000",
+      "--accent-hover": "#333333",
+      "--accent-ink": "#FFFFFF",
+      "--accent-tint": "rgba(0, 0, 0, 0.06)",
+      "--grid": "rgba(0, 0, 0, 0.05)"
+    },
+    "dark": {
+      "--paper": "#000000",
+      "--paper-alt": "#111111",
+      "--ink": "#FFFFFF",
+      "--ink-soft": "#D6D6D6",
+      "--line": "#8A8A8A",
+      "--line-strong": "#CFCFCF",
+      "--accent": "#FFFFFF",
+      "--accent-hover": "#D9D9D9",
+      "--accent-ink": "#000000",
+      "--accent-tint": "rgba(255, 255, 255, 0.1)",
+      "--grid": "rgba(255, 255, 255, 0.06)"
+    }
+  },
+  "soft": {
+    "label": "Soft",
+    "light": {
+      "--paper": "#FAFAFA",
+      "--paper-alt": "#F1F1F1",
+      "--ink": "#2B2B2B",
+      "--ink-soft": "#616161",
+      "--line": "#DCDCDC",
+      "--line-strong": "#A8A8A8",
+      "--accent": "#2B2B2B",
+      "--accent-hover": "#4A4A4A",
+      "--accent-ink": "#FAFAFA",
+      "--accent-tint": "rgba(43, 43, 43, 0.05)",
+      "--grid": "rgba(43, 43, 43, 0.035)",
+      "--radius-sm": "10px",
+      "--radius-md": "10px",
+      "--radius-lg": "10px",
+      "--radius-xl": "10px",
+      "--font-ui": "system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    "dark": {
+      "--paper": "#101010",
+      "--paper-alt": "#1B1B1B",
+      "--ink": "#F2F2F2",
+      "--ink-soft": "#A8A8A8",
+      "--line": "#333333",
+      "--line-strong": "#555555",
+      "--accent": "#F2F2F2",
+      "--accent-hover": "#CFCFCF",
+      "--accent-ink": "#101010",
+      "--accent-tint": "rgba(242, 242, 242, 0.08)",
+      "--grid": "rgba(242, 242, 242, 0.05)",
+      "--radius-sm": "10px",
+      "--radius-md": "10px",
+      "--radius-lg": "10px",
+      "--radius-xl": "10px",
+      "--font-ui": "system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    }
+  }
+}

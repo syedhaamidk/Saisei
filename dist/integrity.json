@@ -1,0 +1,9 @@
+{
+  "dist/blueprint.css": "sha384-jK+mnJ3ELFYzNdseHd5573E0sgCVgGQJjsPCiyYVB3Rhnhh/hOWZajMaOQ/qFxlk",
+  "dist/blueprint.js": "sha384-RmoPb1zLWfEz6cPMlGVdgPwqbqTvCaFbOlgUmPnMSDKr0CI5I0b1FVIlN/W9DKqo",
+  "dist/blueprint.min.css": "sha384-ekPR75gUM0yLIUzt5Pu0najetMXdcfRBl4oDLVbPYcPzi9VnpJ192NXUdDLI8+qu",
+  "dist/blueprint.min.js": "sha384-zfXjAXMiHH4bvBAhCCLYo3r6f/yYuiTfpLXR/cPX4nTFm2fKIVf4Om0QjgCBk7wa",
+  "dist/theme-warm.css": "sha384-WJrekzeIvZ9fhttvHo6RPmZXrkGkBYivkrzixA1lDOwbBhLgrYzmUmnhZTAMNrUF",
+  "dist/theme-contrast.css": "sha384-ZW9lNjinIoCl3+BM6TMU6GD1pwPc1Nq0J2vRpHOIxI7ekNuJ6Tw1v05TAIM3pQQB",
+  "dist/theme-soft.css": "sha384-jpWaQHzquY4M7b+ZTwBPVzAblojeizVood3QYAvI3Bg9umPle806knrPXwe4QBRe"
+}
