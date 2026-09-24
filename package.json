@@ -29,7 +29,7 @@
   "main": "dist/blueprint.js",
   "unpkg": "dist/blueprint.min.css",
   "bin": {
-    "saisei": "./bin/init.js"
+    "saisei": "bin/init.js"
   },
   "exports": {
     "./css": "./dist/blueprint.css",
