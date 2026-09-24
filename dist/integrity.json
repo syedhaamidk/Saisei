@@ -1,9 +1,11 @@
 {
-  "dist/blueprint.css": "sha384-DaC0Gvbh7Sr+EZq/ypQEysnqyP6mDqYUXtQFmi7slamDco3dlzcqiEheHbP3cjOQ",
-  "dist/blueprint.js": "sha384-ZUnqUujGrUaz/gHSC+YbOEidBxha0AYG4w1F5B7KzHoImmWImBv0Z3YuVWDkodtl",
-  "dist/blueprint.min.css": "sha384-OSKmPIjVNmkMYZk7T7P8sQifwqAoAxznCI6RvYYRaD8ndAvZNEfwfzJF7zblJV/l",
-  "dist/blueprint.min.js": "sha384-48f6wPPk0JcQfTAQPxdm+yDA5LOzXFrpUCz8lPO8C3tES3XRvgvKhfwosBfDld8Y",
-  "dist/theme-warm.css": "sha384-mUqXP6TZ5GRlp7jpNEg8S6JTKpE0MDdl0UFJE2sMb1J5Nw92Xge/xDEZg0NvQDtK",
-  "dist/theme-contrast.css": "sha384-0Huti0eqVgNN9SzMaHSUpt8T36FViVAg5QohITbWpN9608QFdrxedxGLT5xdT4Yc",
-  "dist/theme-soft.css": "sha384-Pi7tBAGPNRpEXZGaJpFzMTSBxbjyy/ITbAsyKLggEs1vz2sO9gDNmM1Pn9hjrB1Y"
+  "dist/blueprint.css": "sha384-hOMxVP8MNcRnMeFe12JkhN4ErvgmWisYQMH5gG6bMKsAbnkCcAhP0HMPF8BDWDid",
+  "dist/blueprint.js": "sha384-UUGerTG7YCurmgfcrE7bEdjfBPpLHdVYKngAPab53d2my6SFor+a59tbruy8uVCs",
+  "dist/blueprint.min.css": "sha384-tR0ZoZyfijIMm83auAKD0EN5yS5FEeriYp3PUfwO2iI6EKl5ILFJn2teHIkR7hJ0",
+  "dist/blueprint.min.js": "sha384-mhujlwBdWclNdXYYsotKEhMP4AFj+8T4qMFxdEyDydVBexhGMmUnI1PqFw8bbcPK",
+  "dist/theme-warm.css": "sha384-wGOZ7WTcWotz4DfUf0+YymYfFQ2o+ZvipOUCq5wOTi7a87kYkoWTm1p+5sbCLa6o",
+  "dist/theme-contrast.css": "sha384-RdkM5DztLn3keOHJddViIyih8fOydtgHMa+4wxFq/TyFMOhGbE7Ur/P5+baXkiJH",
+  "dist/theme-soft.css": "sha384-69ddxtGeG6WEoc5YKUEVUquQA4mqJZUEndtEtTrcq0000DKmPdbEz22KRmMSFF+P",
+  "dist/theme-moss.css": "sha384-HsWo3RQSzXzTxHh4GLknpKWJSLGCHP3oXexM3hQ2bEmQar6F2JJbQQRkifQrUcz6",
+  "dist/theme-slate.css": "sha384-XSRix3eYCrqvsvvVZ8pG7LgWU2WJy0m47H6N//LLpYil4Luyan4bpjXv9eT3usA/"
 }

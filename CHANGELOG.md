@@ -4,6 +4,16 @@ All notable changes to `@chomuiro/saisei`, newest first.
 Versioning is SemVer: packaging/dist changes bump minor, fixes bump patch.
 Breaking removals bump major.
 
+## 4.5.0 — Docs, shields, Svelte tests, Moss/Slate themes
+
+- **`docs.html`** — searchable catalog (24 entries, `/` shortcut, live demos,
+  copy-markup per card), axe-covered incl. a search-filters interaction test.
+- **Shields** — npm version, CI, MIT badges atop the README.
+- **Svelte tests** — `adapters/svelte.test.js` (init/apply/toggle/persist) in
+  the vitest run.
+- **Moss + Slate presets** — green-gray and blue-gray themes (AA-checked
+  soft inks), in `themes.json`, playground, and `dist/theme-*.css`.
+
 ## 4.4.0 — Svelte, themes, RTL/print, behavior tests, tokens, drawer, release flow
 
 - **Renamed** package `stock-frontend-blueprint` → `saisei` → `@chomuiro/saisei`

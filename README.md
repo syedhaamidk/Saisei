@@ -1,5 +1,9 @@
 # Saisei — reusable frontend kit (Blueprint design language)
 
+[![npm version](https://img.shields.io/npm/v/@chomuiro/saisei)](https://www.npmjs.com/package/@chomuiro/saisei)
+[![CI](https://github.com/syedhaamidk/Saisei/actions/workflows/ci.yml/badge.svg)](https://github.com/syedhaamidk/Saisei/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A drafting/schematic design language, not a generic SaaS kit. Three files, no build step, no framework lock-in.
 
 - **tokens.css** — every color, font, spacing, and radius value, as CSS variables. This is the only file you should need to touch when starting a new project.
@@ -104,12 +108,15 @@ outside-click/arrows handled); CSS-only tooltip via `data-tip` (avoid on
 **Token playground:** open `playground.html` — tweak surfaces, radius, and font
 stacks against a live component preview, then Copy CSS exports only the changed
 tokens as a `:root` (or `[data-theme="dark"]`) override block. One-click
-presets (Blueprint / Warm / High-contrast / Soft, same values as `themes.json`;
+presets (Blueprint / Warm / High-contrast / Soft / Moss / Slate, same values as `themes.json`;
 `dist/theme-<name>.css` is built for direct inclusion). Design tools consume
 `tokens.json` (Style Dictionary format, verified against `tokens.css` in CI).
 
 **Scaffold:** `npx @chomuiro/saisei init [dir]` (bin `saisei`,
 zero deps) copies the dist bundle + starter page; never overwrites.
+
+**Docs:** `docs.html` — type to filter 24 live entries (`/` focuses search),
+each with copy-paste markup. Linked from the kit and playground navs.
 
 **Drawer / sizes / toast actions:** `[data-drawer-open]` + `.drawer-overlay`
 side panel (focus trap, Esc, scroll lock, RTL-mirrored); `.modal-sm` / `.modal-lg`;

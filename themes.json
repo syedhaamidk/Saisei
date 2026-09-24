@@ -59,8 +59,7 @@
     }
   },
   "soft": {
-    "label": "Soft",
-    "light": {
+    "label": "Soft",    "light": {
       "--paper": "#FAFAFA",
       "--paper-alt": "#F1F1F1",
       "--ink": "#2B2B2B",
@@ -95,6 +94,64 @@
       "--radius-lg": "10px",
       "--radius-xl": "10px",
       "--font-ui": "system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    }
+  },
+  "moss": {
+    "label": "Moss",
+    "light": {
+      "--paper": "#F7F8F4",
+      "--paper-alt": "#ECEFE6",
+      "--ink": "#161A15",
+      "--ink-soft": "#5A6156",
+      "--line": "#D5DACA",
+      "--line-strong": "#9AA392",
+      "--accent": "#161A15",
+      "--accent-hover": "#3A4238",
+      "--accent-ink": "#F7F8F4",
+      "--accent-tint": "rgba(22, 26, 21, 0.06)",
+      "--grid": "rgba(22, 26, 21, 0.045)"
+    },
+    "dark": {
+      "--paper": "#121511",
+      "--paper-alt": "#1C2018",
+      "--ink": "#EFF2E8",
+      "--ink-soft": "#AEB5A2",
+      "--line": "#33392E",
+      "--line-strong": "#59614F",
+      "--accent": "#EFF2E8",
+      "--accent-hover": "#D3D8C6",
+      "--accent-ink": "#121511",
+      "--accent-tint": "rgba(239, 242, 232, 0.08)",
+      "--grid": "rgba(239, 242, 232, 0.05)"
+    }
+  },
+  "slate": {
+    "label": "Slate",
+    "light": {
+      "--paper": "#F7F8FA",
+      "--paper-alt": "#EBEEF2",
+      "--ink": "#17191D",
+      "--ink-soft": "#5B6068",
+      "--line": "#D5D9E0",
+      "--line-strong": "#9AA0AB",
+      "--accent": "#17191D",
+      "--accent-hover": "#3B4048",
+      "--accent-ink": "#F7F8FA",
+      "--accent-tint": "rgba(23, 25, 29, 0.06)",
+      "--grid": "rgba(23, 25, 29, 0.045)"
+    },
+    "dark": {
+      "--paper": "#111418",
+      "--paper-alt": "#1A1E24",
+      "--ink": "#EFF1F5",
+      "--ink-soft": "#ABB2BC",
+      "--line": "#31363E",
+      "--line-strong": "#596069",
+      "--accent": "#EFF1F5",
+      "--accent-hover": "#D2D7DE",
+      "--accent-ink": "#111418",
+      "--accent-tint": "rgba(239, 241, 245, 0.08)",
+      "--grid": "rgba(239, 241, 245, 0.05)"
     }
   }
 }

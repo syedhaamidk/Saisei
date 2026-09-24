@@ -44,6 +44,14 @@ test("playground has no violations", async ({ page }) => {
   expect(results.violations).toEqual([]);
 });
 
+test("docs has no violations, search filters", async ({ page }) => {
+  await page.goto("/docs.html");
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations).toEqual([]);
+  await page.getByLabel("Search components").fill("toast");
+  await expect(page.getByText("1 of 24")).toBeVisible();
+});
+
 test("no violations with palette open", async ({ page }) => {
   await page.goto("/index.html");
   await page.keyboard.press("Control+k");

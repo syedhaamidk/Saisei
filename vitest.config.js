@@ -3,6 +3,6 @@ const { defineConfig } = require("vitest/config");
 module.exports = defineConfig({
   test: {
     environment: "jsdom",
-    include: ["react/**/*.test.jsx"],
+    include: ["react/**/*.test.jsx", "adapters/**/*.test.js"],
   },
 });

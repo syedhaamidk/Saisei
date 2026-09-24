@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saisei — Component Docs</title>
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("bpk-theme");
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (stored === "dark" || (!stored && prefersDark)) document.documentElement.dataset.theme = "dark";
+    } catch (e) { /* default light is fine */ }
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  .docs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  @media (max-width: 860px) { .docs-grid { grid-template-columns: 1fr; } }
+  .docs-card pre { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--space-3); overflow-x: auto; font-family: var(--font-mono); font-size: var(--text-xs); margin: var(--space-3) 0 0; white-space: pre; }
+  .docs-cat { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+  .docs-demo { padding: var(--space-4) 0; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); margin: var(--space-3) 0; }
+</style>
+</head>
+<body>
+
+<a href="#docs-results" class="skip-link">Skip to results</a>
+
+<div class="container" style="padding-bottom: var(--space-8);">
+
+  <div class="utility-bar reveal">
+    <nav aria-label="Section navigation">
+      <ul class="utility-links">
+        <li><a href="index.html">← Kit</a></li>
+        <li><a href="playground.html">↗ Playground</a></li>
+      </ul>
+    </nav>
+    <button class="btn btn-secondary btn-sm mono" id="theme-toggle">⇄ Dark</button>
+  </div>
+
+  <main id="main-content">
+  <div class="titleblock reg-corners draw-in reveal">
+    <div class="titleblock-main">
+      <span class="sheet-label">Saisei / Docs</span>
+      <h1 class="h1" style="max-width: 16ch;">Every piece, searchable.</h1>
+      <p class="text-soft" style="max-width: 52ch;">Type to filter. Each card shows the live component and its copy-paste markup. Press <kbd class="key">/</kbd> to jump to search.</p>
+      <div class="field" style="margin-top: var(--space-4); max-width: 420px;">
+        <label class="label" for="docs-search">Search components</label>
+        <input class="input mono" id="docs-search" type="search" placeholder="modal, table, toast…" autocomplete="off">
+      </div>
+      <p class="mono text-sm text-soft" id="docs-count" aria-live="polite"></p>
+    </div>
+    <div class="titleblock-cell">
+      <span class="tb-label">Entries</span>
+      <span class="tb-value" id="docs-total">—</span>
+    </div>
+  </div>
+
+  <div class="docs-grid" id="docs-results" aria-live="polite"></div>
+  </main>
+
+</div>
+
+<!-- Palette + modal + drawer wiring for live demos -->
+<div class="palette-overlay" id="palette" role="presentation" aria-hidden="true" inert>
+  <div class="palette" role="dialog" aria-modal="true" aria-label="Command palette">
+    <input class="palette-input" type="text" placeholder="Type a command…" aria-label="Command search" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false">
+    <ul class="palette-list" id="palette-list" role="listbox" aria-label="Commands"></ul>
+  </div>
+</div>
+
+<div class="modal-overlay" id="docs-modal" data-modal role="presentation" aria-hidden="true" inert>
+  <div class="modal reg-corners" role="dialog" aria-modal="true" aria-labelledby="docs-modal-t">
+    <div class="modal-header">
+      <h3 class="h3" id="docs-modal-t" style="margin: 0;">Modal demo</h3>
+      <button class="modal-close" data-modal-close aria-label="Close dialog">[ X ]</button>
+    </div>
+    <p class="text-soft text-sm">Focus trap, scroll lock, and restore come free.</p>
+    <div class="modal-footer"><button class="btn btn-secondary" data-modal-close>Close</button></div>
+  </div>
+</div>
+
+<div class="drawer-overlay" id="docs-drawer" data-drawer role="presentation" aria-hidden="true" inert>
+  <div class="drawer" role="dialog" aria-modal="true" aria-label="Drawer demo">
+    <div class="modal-header">
+      <h3 class="h3" style="margin: 0;">Drawer demo</h3>
+      <button class="modal-close" data-drawer-close aria-label="Close panel">[ X ]</button>
+    </div>
+    <p class="text-soft text-sm">Slides from the inline-end side.</p>
+    <button class="btn btn-secondary btn-sm" data-drawer-close>Done</button>
+  </div>
+</div>
+
+<script src="components.js"></script>
+<script>
+(function () {
+  "use strict";
+  var ENTRIES = [
+    { name: "Button", cat: "Buttons", tags: "primary secondary ghost danger small", desc: "Five variants, one consistent set of states. React: Button.", react: "Button",
+      demo: '<div class="row" style="flex-wrap:wrap;"><button class="btn btn-primary">Primary</button><button class="btn btn-secondary">Secondary</button><button class="btn btn-ghost">Ghost</button><button class="btn btn-danger">Destructive</button></div>',
+      code: '<button class="btn btn-primary">Primary</button>' },
+    { name: "Text input", cat: "Forms", tags: "input field label hint", desc: "Label + input + hint. Error state adds aria-invalid and an alert.", react: null,
+      demo: '<div class="field"><label class="label" for="d-name">Full name</label><input class="input" id="d-name" placeholder="Ada Lovelace"><span class="hint">Visible only to your team.</span></div>',
+      code: '<div class="field">\n  <label class="label" for="name">Full name</label>\n  <input class="input" id="name" placeholder="Ada Lovelace">\n</div>' },
+    { name: "Select & textarea", cat: "Forms", tags: "dropdown multiline", desc: "Same frame as inputs; textarea resizes vertically.", react: null,
+      demo: '<div class="field"><label class="label" for="d-role">Role</label><select class="select" id="d-role"><option>Designer</option><option>Engineer</option></select></div>',
+      code: '<label class="label" for="role">Role</label>\n<select class="select" id="role">…</select>' },
+    { name: "Checkbox & switch", cat: "Forms", tags: "toggle boolean", desc: "Native inputs, kit-styled. Switches animate on the fast tier.", react: null,
+      demo: '<div class="row"><input class="checkbox" type="checkbox" id="d-cb" checked><label for="d-cb" class="text-sm">Email me updates</label></div><div class="row"><input class="switch" type="checkbox" id="d-sw" checked><label for="d-sw" class="text-sm">Auto-save</label></div>',
+      code: '<input class="switch" type="checkbox" id="sw">\n<label for="sw">Auto-save</label>' },
+    { name: "Combobox", cat: "Forms", tags: "autocomplete filter listbox react", desc: "Filterable input + listbox. Arrows, Enter, Esc wired. React: Combobox.", react: "Combobox",
+      demo: '<div class="field"><label class="label" for="d-combo">Team</label><div class="combo-wrap"><input class="input" id="d-combo" role="combobox" aria-expanded="false" aria-controls="d-combo-list" aria-autocomplete="list" autocomplete="off" placeholder="Pick…"><ul class="combo-list" id="d-combo-list" role="listbox" aria-label="Teams" hidden><li role="option" data-value="Atlas">Atlas</li><li role="option" data-value="Beacon">Beacon</li></ul></div></div>',
+      code: '<div class="combo-wrap">\n  <input role="combobox" aria-controls="list" aria-autocomplete="list">\n  <ul class="combo-list" id="list" role="listbox" hidden>…</ul>\n</div>' },
+    { name: "Card", cat: "Surfaces", tags: "panel sheet corners react", desc: "Spec-sheet unit. Registration corners on major surfaces only. React: Card.", react: "Card",
+      demo: '<div class="card reg-corners"><span class="card-tag">// CARD-01</span><h3 class="card-title">Project Atlas</h3><p class="text-soft text-sm">Badge, title, body.</p></div>',
+      code: '<div class="card reg-corners">\n  <span class="card-tag">// CARD-01</span>\n  <h3 class="card-title">…</h3>\n</div>' },
+    { name: "Badge", cat: "Surfaces", tags: "tag status solid dashed double react", desc: "Status reads through line type: solid neutral, dashed warning, double danger. React: Badge.", react: "Badge",
+      demo: '<div class="row"><span class="badge badge-accent">Active</span><span class="badge badge-warning">Pending</span><span class="badge badge-danger">Suspended</span></div>',
+      code: '<span class="badge badge-accent">Active</span>' },
+    { name: "Alert", cat: "Feedback", tags: "notice error annotation react", desc: "Annotation callout with a leader edge. React: Alert.", react: "Alert",
+      demo: '<div class="alert alert-warning"><span class="alert-tag">FLAG</span><span>Close to the usage limit.</span></div>',
+      code: '<div class="alert alert-warning">\n  <span class="alert-tag">FLAG</span><span>…</span>\n</div>' },
+    { name: "Empty state", cat: "Feedback", tags: "blank nothing react", desc: "Dashed panel for zero-data views. React: Empty.", react: "Empty",
+      demo: '<div class="empty"><h3 class="empty-title">No revisions yet</h3><p>Start one to fill this sheet.</p></div>',
+      code: '<div class="empty">\n  <h3 class="empty-title">…</h3><p>…</p>\n</div>' },
+    { name: "Progress", cat: "Feedback", tags: "bar loading react", desc: "Set progress with --value. Always label it. React: Progress.", react: "Progress",
+      demo: '<div class="progress" role="progressbar" aria-label="Upload" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><i style="--value: 65%;"></i></div>',
+      code: '<div class="progress" role="progressbar" aria-label="Upload" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><i style="--value: 65%;"></i></div>' },
+    { name: "Skeleton & avatar", cat: "Surfaces", tags: "loading placeholder person react", desc: "Shimmer blocks and mono initial tiles. React: Skeleton.", react: "Skeleton",
+      demo: '<div class="row"><div class="avatar">JS</div><div class="skeleton" style="height:14px;width:40%;"></div></div>',
+      code: '<div class="avatar">JS</div>\n<div class="skeleton" style="height:14px;width:40%;"></div>' },
+    { name: "Breadcrumbs", cat: "Navigation", tags: "crumbs trail react", desc: "Mono trail with aria-current on the page. React: Crumbs.", react: "Crumbs",
+      demo: '<nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="index.html">Index</a></li><li><span aria-current="page">Docs</span></li></ol></nav>',
+      code: '<nav aria-label="Breadcrumb">\n  <ol class="crumbs">…</ol>\n</nav>' },
+    { name: "Tabs", cat: "Patterns", tags: "tablist underline keyboard react", desc: "Arrow-key ARIA pattern with sliding indicator. React: Tabs.", react: "Tabs",
+      demo: '<div class="tabs" role="tablist" aria-label="Demo" data-tabs><button class="tab" role="tab" aria-selected="true" data-tab-target="d-p1">One</button><button class="tab" role="tab" aria-selected="false" data-tab-target="d-p2">Two</button></div><div class="tab-panels"><div class="tab-panel" id="d-p1" role="tabpanel" aria-hidden="false"><p class="text-soft text-sm">First.</p></div><div class="tab-panel" id="d-p2" role="tabpanel" aria-hidden="true"><p class="text-soft text-sm">Second.</p></div></div>',
+      code: '<div class="tabs" role="tablist" data-tabs>…</div>\n<div class="tab-panels">…</div>' },
+    { name: "Accordion", cat: "Patterns", tags: "collapse faq react", desc: "Height fits content; trigger carries aria-controls. React: Accordion.", react: "Accordion",
+      demo: '<div class="accordion-item"><button class="accordion-trigger" aria-expanded="false" data-accordion-trigger>Re-theme? <span class="chev">+</span></button><div class="accordion-panel"><div class="accordion-panel-inner">Edit tokens.css.</div></div></div>',
+      code: '<button class="accordion-trigger" aria-expanded="false" data-accordion-trigger>…</button>\n<div class="accordion-panel">…</div>' },
+    { name: "Modal", cat: "Overlays", tags: "dialog focus trap react", desc: "Focus trap, scroll lock, restore, Esc. React: Modal with animated exit + sizes.", react: "Modal",
+      demo: '<button class="btn btn-primary btn-sm" data-modal-open="docs-modal">Open modal</button>',
+      code: '<button data-modal-open="my-modal">Open</button>\n<div class="modal-overlay" id="my-modal" data-modal>…</div>' },
+    { name: "Drawer", cat: "Overlays", tags: "side panel slide react", desc: "Same contract as modal, slides from inline-end (RTL-mirrored). React: Drawer.", react: "Drawer",
+      demo: '<button class="btn btn-secondary btn-sm" data-drawer-open="docs-drawer">Open drawer</button>',
+      code: '<button data-drawer-open="my-drawer">Open</button>\n<div class="drawer-overlay" id="my-drawer" data-drawer>…</div>' },
+    { name: "Toast", cat: "Overlays", tags: "notification announce action react", desc: "Polite live region; optional action button. React: ToastProvider + useToast.", react: "Toast",
+      demo: '<div class="row"><button class="btn btn-secondary btn-sm" onclick="window.toast(\'// Saved\')">Fire</button><button class="btn btn-ghost btn-sm" onclick="window.toast(\'// Archived\', { label: \'Undo\' })">With action</button></div>',
+      code: 'window.toast("// Saved");\nwindow.toast("// Archived", { label: "Undo", run });' },
+    { name: "DataTable", cat: "Data", tags: "sort filter pager table react", desc: "Numeric-aware sort, whole-row filter, only the page in DOM. React: DataTable.", react: "DataTable",
+      demo: '<div data-datatable data-page-size="2"><div class="datatable-bar"><div class="field"><label class="label" for="d-filter">Filter</label><input class="input" id="d-filter" type="search" data-table-filter></div><div class="pager"><button class="btn btn-secondary btn-sm" data-table-prev>← Prev</button><span data-table-info></span><button class="btn btn-secondary btn-sm" data-table-next>Next →</button></div></div><div class="table-wrap" tabindex="0" role="region" aria-label="Demo table"><table class="table"><thead><tr><th scope="col" data-sort="n">Name</th></tr></thead><tbody><tr><td>Ada</td></tr><tr><td>Grace</td></tr><tr><td>Alan</td></tr></tbody></table></div></div>',
+      code: '<div data-datatable data-page-size="6">\n  <input data-table-filter>\n  <table class="table">…<th data-sort="name">…\n  <button data-table-prev>…<span data-table-info>…\n</div>' },
+    { name: "Command palette", cat: "Patterns", tags: "ctrl k fuzzy search react", desc: "Ctrl/⌘+K over nav links + [data-command]. React: CommandPalette.", react: "CommandPalette",
+      demo: '<button class="btn btn-ghost btn-sm mono" data-palette-open>⌘K commands</button>',
+      code: '<button data-palette-open>Commands</button>\n<div class="palette-overlay" id="palette">…</div>' },
+    { name: "Dropdown menu", cat: "Patterns", tags: "menu actions keyboard react", desc: "Click/arrows/Esc/outside-click handled. React: Dropdown.", react: "Dropdown",
+      demo: '<span class="menu-wrap"><button class="btn btn-secondary btn-sm" data-menu-trigger aria-expanded="false" aria-controls="d-menu" aria-haspopup="menu">Actions ▾</button><ul class="menu" id="d-menu" role="menu" hidden><li role="none"><button class="menu-item" role="menuitem">Rename</button></li><li role="none"><button class="menu-item" role="menuitem">Archive</button></li></ul></span>',
+      code: '<button data-menu-trigger aria-controls="menu">…</button>\n<ul class="menu" id="menu" role="menu" hidden>…</ul>' },
+    { name: "Tooltip", cat: "Patterns", tags: "hint hover css only", desc: "CSS-only via data-tip; shows on hover and keyboard focus.", react: null,
+      demo: '<button class="btn btn-secondary btn-sm" data-tip="Small variant">Hover me</button>',
+      code: '<button data-tip="Hint text">Hover me</button>' },
+    { name: "Ticker tape", cat: "Motion", tags: "marquee scroll strip react", desc: "Infinite strip, pauses on hover/focus. Duplicate content for the loop. React: TickerTape.", react: "TickerTape",
+      demo: '<div class="ticker-tape"><div class="ticker-tape-track"><span class="ticker-tape-item"><strong>A</strong> 1 <span class="up">+1%</span></span><span class="ticker-tape-item"><strong>A</strong> 1 <span class="up">+1%</span></span></div></div>',
+      code: '<div class="ticker-tape"><div class="ticker-tape-track">…×2…</div></div>' },
+    { name: "Stats & count-up", cat: "Motion", tags: "numbers animated react", desc: "Eased count on scroll into view; reduced-motion gets the final value. React: AnimatedNumber.", react: "AnimatedNumber",
+      demo: '<div class="stats"><div><span class="stat-value" data-countup="128">0</span><span class="stat-label">Units</span></div></div>',
+      code: '<span class="stat-value" data-countup="128" data-decimals="0">0</span>' },
+    { name: "Theme toggle", cat: "Patterns", tags: "dark mode react", desc: "Persisted, OS fallback, no flash (head snippet). React: ThemeToggle.", react: "ThemeToggle",
+      demo: '<button class="btn btn-secondary btn-sm mono" id="theme-toggle">⇄ Dark</button>',
+      code: 'document.documentElement.dataset.theme = "dark";' }
+  ];
+
+  var grid = document.getElementById("docs-results");
+  var search = document.getElementById("docs-search");
+  var count = document.getElementById("docs-count");
+  document.getElementById("docs-total").textContent = String(ENTRIES.length);
+
+  function esc(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function card(e) {
+    var el = document.createElement("article");
+    el.className = "card";
+    el.innerHTML =
+      '<span class="docs-cat">' + esc(e.cat) + (e.react ? " · React: " + esc(e.react) : "") + "</span>" +
+      '<h2 class="card-title" style="margin-top: var(--space-2); font-size: var(--text-lg);">' + esc(e.name) + "</h2>" +
+      '<p class="text-soft text-sm">' + esc(e.desc) + "</p>" +
+      '<div class="docs-demo">' + e.demo + "</div>" +
+      "<details><summary class=\"mono text-sm\">Markup</summary><pre></pre></details>" +
+      '<div class="row" style="margin-top: var(--space-3);"><button class="btn btn-secondary btn-sm" type="button">Copy markup</button></div>';
+    el.querySelector("pre").textContent = e.code;
+    el.querySelector(".row .btn").addEventListener("click", function () {
+      var done = function () { window.toast && window.toast("// Copied " + e.name); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(e.code).then(done, done);
+      else done();
+    });
+    return el;
+  }
+
+  function render() {
+    var q = search.value.trim().toLowerCase();
+    grid.innerHTML = "";
+    var shown = ENTRIES.filter(function (e) {
+      return !q || (e.name + " " + e.cat + " " + e.tags + " " + e.desc).toLowerCase().includes(q);
+    });
+    shown.forEach(function (e) { grid.appendChild(card(e)); });
+    count.textContent = shown.length === ENTRIES.length
+      ? ENTRIES.length + " entries"
+      : shown.length + " of " + ENTRIES.length;
+    if (!shown.length) {
+      grid.innerHTML = '<div class="empty"><h3 class="empty-title">No match</h3><p>Try "modal", "table", or "toast".</p></div>';
+    }
+  }
+
+  search.addEventListener("input", render);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== search) { e.preventDefault(); search.focus(); }
+  });
+  render();
+})();
+</script>
+</body>
+</html>
