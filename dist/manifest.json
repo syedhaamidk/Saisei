@@ -1,5 +1,5 @@
 {
-  "name": "saisei",
+  "name": "@chomuiro/saisei",
   "version": "4.4.0",
   "kit": [
     "dist/blueprint.css",

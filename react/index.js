@@ -1,5 +1,5 @@
 /* react/index.js — public entry. Import CSS once in your app root:
-   import "saisei/dist/blueprint.css"; */
+   import "@chomuiro/saisei/dist/blueprint.css"; */
 export { default as Button } from "./Button.jsx";
 export { Card, Badge, Alert, Skeleton, Empty, Progress, Crumbs } from "./Card.jsx";
 export { default as Modal } from "./Modal.jsx";

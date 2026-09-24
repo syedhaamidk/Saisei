@@ -23,28 +23,28 @@ Two files carry the whole kit. Pick one path:
 
 Copy any markup block from `index.html` — classes just work. See `examples/plain-html.html`.
 
-**B — npm.** `npm i saisei`, then import once at your app root:
+**B — npm.** `npm i @chomuiro/saisei`, then import once at your app root:
 
 ```js
-import "saisei/dist/blueprint.css"; // or ./css export
-import "saisei/dist/blueprint.js";  // optional: data-* auto-wiring
+import "@chomuiro/saisei/dist/blueprint.css"; // or ./css export
+import "@chomuiro/saisei/dist/blueprint.js";  // optional: data-* auto-wiring
 ```
 
 **C — CDN.** After publishing, pin a version from unpkg/jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/saisei@4.4.0/dist/blueprint.css">
-<script src="https://unpkg.com/saisei@4.4.0/dist/blueprint.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@chomuiro/saisei@4.4.0/dist/blueprint.css">
+<script src="https://unpkg.com/@chomuiro/saisei@4.4.0/dist/blueprint.js"></script>
 ```
 
 **Frameworks:** keep the CSS classes, re-implement open/close state in your framework for production
 (quick prototypes can keep `blueprint.js` as-is — it queries the DOM directly).
 
-**React library** (`saisei/react`, peer dep `react` — verified with esbuild):
+**React library** (`@chomuiro/saisei/react`, peer dep `react` — verified with esbuild):
 
 ```jsx
-import "saisei/dist/blueprint.css";
-import { Button, Card, Modal, Tabs, ToastProvider, useToast, TickerTape, ThemeToggle } from "saisei/react";
+import "@chomuiro/saisei/dist/blueprint.css";
+import { Button, Card, Modal, Tabs, ToastProvider, useToast, TickerTape, ThemeToggle } from "@chomuiro/saisei/react";
 ```
 
 Components: `Button` (primary/secondary/ghost/danger), `Card`/`Badge`/`Alert`/`Skeleton`,
@@ -108,7 +108,7 @@ presets (Blueprint / Warm / High-contrast / Soft, same values as `themes.json`;
 `dist/theme-<name>.css` is built for direct inclusion). Design tools consume
 `tokens.json` (Style Dictionary format, verified against `tokens.css` in CI).
 
-**Scaffold:** `npx saisei init [dir]` (bin `saisei`,
+**Scaffold:** `npx @chomuiro/saisei init [dir]` (bin `saisei`,
 zero deps) copies the dist bundle + starter page; never overwrites.
 
 **Drawer / sizes / toast actions:** `[data-drawer-open]` + `.drawer-overlay`

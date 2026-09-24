@@ -1,5 +1,5 @@
 {
-  "name": "saisei",
+  "name": "@chomuiro/saisei",
   "version": "4.4.0",
   "description": "Blueprint drafting-style reusable frontend kit (tokens + components + motion + React library). No build step, no framework lock-in.",
   "license": "MIT",

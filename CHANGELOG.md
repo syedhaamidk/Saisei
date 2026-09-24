@@ -1,12 +1,13 @@
 # Changelog
 
-All notable changes to `saisei`, newest first.
+All notable changes to `@chomuiro/saisei`, newest first.
 Versioning is SemVer: packaging/dist changes bump minor, fixes bump patch.
 Breaking removals bump major.
 
 ## 4.4.0 — Svelte, themes, RTL/print, behavior tests, tokens, drawer, release flow
 
-- **Renamed** package `stock-frontend-blueprint` → `saisei` (imports, bin `saisei`, CDN paths).
+- **Renamed** package `stock-frontend-blueprint` → `saisei` → `@chomuiro/saisei`
+  (`saisei` is taken on npm; bin command stays `saisei`).
 
 - **Svelte adapter** — `adapters/svelte.js` (`theme` store, `initTheme`, `toggle`,
   Svelte 4 + 5 compatible) + `examples/svelte.svelte`; typed d.ts included.

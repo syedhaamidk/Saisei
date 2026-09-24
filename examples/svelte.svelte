@@ -1,8 +1,8 @@
-<!-- examples/svelte.svelte — minimal Svelte usage. Install: npm i saisei -->
-<!-- In layout/load: import "saisei/dist/blueprint.css"; -->
+<!-- examples/svelte.svelte — minimal Svelte usage. Install: npm i @chomuiro/saisei -->
+<!-- In layout/load: import "@chomuiro/saisei/dist/blueprint.css"; -->
 <script>
   import { onMount } from "svelte";
-  import { theme, initTheme, toggle } from "saisei/adapters/svelte.js";
+  import { theme, initTheme, toggle } from "@chomuiro/saisei/adapters/svelte.js";
 
   let open = false;
   onMount(initTheme);

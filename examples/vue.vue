@@ -1,5 +1,5 @@
-<!-- examples/vue.vue — minimal Vue usage. Install: npm i saisei -->
-<!-- In main.js: import "saisei/dist/blueprint.css"; -->
+<!-- examples/vue.vue — minimal Vue usage. Install: npm i @chomuiro/saisei -->
+<!-- In main.js: import "@chomuiro/saisei/dist/blueprint.css"; -->
 <template>
   <main class="container">
     <button class="btn btn-secondary btn-sm mono" @click="toggle">
@@ -23,7 +23,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useBlueprintTheme } from "saisei/adapters/vue.js";
+import { useBlueprintTheme } from "@chomuiro/saisei/adapters/vue.js";
 const { theme, toggle } = useBlueprintTheme();
 const open = ref(false);
 </script>

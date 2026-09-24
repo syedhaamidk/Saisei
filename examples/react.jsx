@@ -1,13 +1,13 @@
 // examples/react.jsx — React usage with the component library.
-// Install: npm i saisei
-// Import once at app root:  import "saisei/dist/blueprint.css";
+// Install: npm i @chomuiro/saisei
+// Import once at app root:  import "@chomuiro/saisei/dist/blueprint.css";
 import { useState } from "react";
 import {
   Button, Card, Badge, Alert, Modal, Tabs, Accordion,
   ToastProvider, useToast, TickerTape, ThemeToggle,
   DataTable, CommandPalette, Dropdown, Combobox,
   Reveal, AnimatedNumber,
-} from "saisei/react";
+} from "@chomuiro/saisei/react";
 
 function Demo() {
   const toast = useToast();

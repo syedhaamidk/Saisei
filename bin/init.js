@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* blueprint-init — scaffolds the kit into any folder. No dependencies.
-   Usage: npx saisei init [dir]   (default: ./blueprint-site) */
+   Usage: npx @chomuiro/saisei init [dir]   (default: ./blueprint-site) */
 const fs = require("node:fs");
 const path = require("node:path");
 

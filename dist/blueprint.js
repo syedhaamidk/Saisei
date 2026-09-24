@@ -1,4 +1,4 @@
-/*! saisei v4.4.0 — Blueprint kit. MIT. See README "Reuse in any website". */
+/*! @chomuiro/saisei v4.4.0 — Blueprint kit. MIT. See README "Reuse in any website". */
 /* ============================================================
    COMPONENTS.JS — no dependencies. Auto-wires any markup that
    follows the data-attribute contracts below. Drop this file in
