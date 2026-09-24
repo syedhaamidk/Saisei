@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="components.css">
 <style>
   .docs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  .docs-grid > * { min-width: 0; } /* code <pre>s must not blow out the 1fr column */
   @media (max-width: 860px) { .docs-grid { grid-template-columns: 1fr; } }
   .docs-card pre { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--space-3); overflow-x: auto; font-family: var(--font-mono); font-size: var(--text-xs); margin: var(--space-3) 0 0; white-space: pre; }
   .docs-cat { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
