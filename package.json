@@ -12,6 +12,7 @@
   ],
   "files": [
     "dist/",
+    "assets/",
     "bin/",
     "playground.html",
     "tokens.css",

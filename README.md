@@ -1,3 +1,5 @@
+![Saisei — kit title block](assets/saisei-header.svg)
+
 # Saisei — reusable frontend kit (Blueprint design language)
 
 [![npm version](https://img.shields.io/npm/v/@chomuiro/saisei)](https://www.npmjs.com/package/@chomuiro/saisei)
@@ -6,11 +8,25 @@
 
 A drafting/schematic design language, not a generic SaaS kit. Three files, no build step, no framework lock-in.
 
+| Kit catalog | Token playground | Searchable docs |
+|---|---|---|
+| ![Component catalog](assets/demo-kit.png) | ![Token playground](assets/demo-playground.png) | ![Component docs](assets/demo-docs.png) |
+
 - **tokens.css** — every color, font, spacing, and radius value, as CSS variables. This is the only file you should need to touch when starting a new project.
 - **components.css** — buttons, forms, cards, badges, alerts, title-block nav, tabs, accordion, modal, toast, table, avatar, skeleton loaders. Reads only from tokens.css.
 - **components.js** — vanilla JS that wires up modals, tabs, accordions, and toasts via `data-*` attributes. No dependencies, no build step.
 
-Open `index.html` to see every component and copy markup straight from it.
+Open `index.html` to see every component and copy markup straight from it. Open `playground.html` to re-skin live, `docs.html` to search the catalog.
+
+## Themes
+
+One-click presets — same values as `themes.json`, built to `dist/theme-<name>.css`:
+
+| Blueprint (default) | Warm | Contrast | Soft | Moss | Slate | Blueprint-blue |
+|---|---|---|---|---|---|---|
+| ![default](https://img.shields.io/badge/paper-FFFFFF-lightgrey) | ![warm](https://img.shields.io/badge/paper-FAF7F1-lightgrey) | ![contrast](https://img.shields.io/badge/paper-FFFFFF-black) | ![soft](https://img.shields.io/badge/paper-FAFAFA-lightgrey) | ![moss](https://img.shields.io/badge/paper-F7F8F4-lightgrey) | ![slate](https://img.shields.io/badge/paper-F7F8FA-lightgrey) | ![blueprint](https://img.shields.io/badge/paper-143D66-blue) |
+
+![Blueprint-blue theme](assets/demo-blueprint.png)
 
 ## Reuse in any website
 
@@ -37,8 +53,8 @@ import "@chomuiro/saisei/dist/blueprint.js";  // optional: data-* auto-wiring
 **C — CDN.** After publishing, pin a version from unpkg/jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@chomuiro/saisei@4.4.0/dist/blueprint.css">
-<script src="https://unpkg.com/@chomuiro/saisei@4.4.0/dist/blueprint.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@chomuiro/saisei@4.6.0/dist/blueprint.css">
+<script src="https://unpkg.com/@chomuiro/saisei@4.6.0/dist/blueprint.js"></script>
 ```
 
 **Frameworks:** keep the CSS classes, re-implement open/close state in your framework for production
